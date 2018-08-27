@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.divide.ibitech.divide_ibitech.DisplayListOne">
-<ListView
+    tools:context="com.divide.ibitech.divide_ibitech.DisplayListTwo">
 
-    android:id="@+id/list_data"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <ListView
 
-</ListView>
+        android:id="@+id/list_pat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
 </android.support.constraint.ConstraintLayout>
-
-
-

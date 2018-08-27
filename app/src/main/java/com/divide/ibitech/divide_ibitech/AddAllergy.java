@@ -12,18 +12,34 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 public class AddAllergy extends AppCompatActivity {
     String URL_ALLERGY= "http://sict-iis.nmmu.ac.za/ibitech/app-test/addcondition.php";
     Spinner sp_Severity;
     AutoCompleteTextView autoCompleteTextView;
     String[] AllergyName;
-    String idNumber, allergy,addDate,severity;
+   String idNumber="";
+    String idnumb="";
+    final  String allergy="";
+    final String addDate="";
+String severity="";
     TextView tv_date;
     EditText etAllName,tvtID;
 
@@ -87,6 +103,48 @@ public class AddAllergy extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                final String allergy=autoCompleteTextView.getText().toString();
+                final String addDate=tv_date.getText().toString();
+
+
+                StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_ALLERGY,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+
+                                    JSONArray jsonArray = new JSONArray(response);
+                                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                    String code = jsonObject.getString("code");
+                                    String message = jsonObject.getString("message");
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                Toast toast = Toast.makeText(AddAllergy.this, response, Toast.LENGTH_LONG);
+                                toast.show();
+
+
+                            }
+                        }, new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }){
+
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String,String>paramas= new HashMap<String, String>();
+                        paramas.put("Allergy_name",allergy);
+                        paramas.put("severity",addDate);
+
+
+
+                        return paramas;
+                    }
+                };
+                Singleton.getInstance(AddAllergy.this).addToRequestQue(stringRequest);
 
             }
         });
@@ -101,4 +159,6 @@ public class AddAllergy extends AppCompatActivity {
             }
         });
     }
+
+
 }
