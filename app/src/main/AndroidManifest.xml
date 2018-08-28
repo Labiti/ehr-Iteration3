@@ -49,7 +49,8 @@
             android:label="Setting" />
         <activity android:name=".ViewOne" />
         <activity android:name=".ViewTwo" />
-        <activity android:name=".DisplayListOne"></activity>
+        <activity android:name=".DisplayListOne" />
+        <activity android:name=".DisplayListTwo"></activity>
     </application>
 
 </manifest>

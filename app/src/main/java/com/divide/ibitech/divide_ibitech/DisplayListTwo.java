@@ -12,7 +12,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.divide.ibitech.divide_ibitech.Adapter.DocAdapter;
+import com.divide.ibitech.divide_ibitech.Adapter.PatAdapter;
 import com.divide.ibitech.divide_ibitech.Model.Doctor;
+import com.divide.ibitech.divide_ibitech.Model.Patient;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,32 +23,30 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DisplayListOne extends AppCompatActivity {
-ListView listView;
-List<Doctor> doctorList;
-String listOne_url="";
+public class DisplayListTwo extends AppCompatActivity {
+    ListView listView;
+    List<Patient> patientList;
+    String listOne_url="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_list_one);
-        listView=(ListView)findViewById(R.id.list_data);
-        doctorList=new ArrayList<>();
+        setContentView(R.layout.activity_display_list_two);
+        listView=(ListView)findViewById(R.id.list_pat);
+        patientList= new ArrayList<>();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent fast =new Intent(DisplayListOne.this,ViewOne.class);
+                Intent fast =new Intent(DisplayListTwo.this,ViewTwo
+                        .class);
 
                 startActivity(fast);
                 showlist();
             }
         });
-
-
-
     }
 
-    public  void showlist(){
-
+ public   void showlist()
+    {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, listOne_url,
                 new Response.Listener<String>() {
                     @Override
@@ -55,12 +55,12 @@ String listOne_url="";
                             JSONObject object= new JSONObject(response);
                             JSONArray array = object.getJSONArray("server_response");
                             for(int i =0;i<array.length();i++) {
-                                JSONObject docObj = array.getJSONObject(i);
-                                Doctor d = new Doctor(docObj.getString(""),docObj.getString(""),docObj.getString(""));
-                                doctorList.add(d);
+                                JSONObject patObj = array.getJSONObject(i);
+                                Patient p = new Patient(patObj.getString(""),patObj.getString(""),patObj.getString(""));
+                             patientList.add(p);
 
                             }
-                            DocAdapter adapter = new DocAdapter(doctorList,getApplication());
+                            PatAdapter adapter = new PatAdapter(patientList,getApplication());
                             listView.setAdapter(adapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -76,6 +76,6 @@ String listOne_url="";
 
         };
 
-Singleton.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
+        Singleton.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
     }
 }

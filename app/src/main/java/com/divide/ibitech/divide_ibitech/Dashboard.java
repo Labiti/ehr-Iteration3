@@ -45,7 +45,7 @@ import java.util.Map;
 
 public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    private FloatingActionButton mFAB,fabCondition,fabSyptom,fabAllergy;
+    private FloatingActionButton mFAB,fabCondition,fabSyptom,fabVisit;
 
     TextView tv_FullName, tv_Age, tv_BloodType, tv_Address,tv_Gender,tv_MaritalStatus;
     ImageView img_ProfilePic;
@@ -165,8 +165,9 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         tv_Gender.setText(sGender);
         tv_MaritalStatus.setText(sStatus);
         tv_Address.setText(sAddress);
+        fabVisit= (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fabVisits);
         mFAB = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.floatingActionItem2);
-        fabCondition = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.floatingActionItem3);
+        fabSyptom = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.floatingActionItem3);
         //For Dashboard display
        // For Edit Profile
         String sID = user.get(sessionManager.ID);
@@ -210,7 +211,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Dashboard.this, AddAllergy.class));
-                Toast.makeText(Dashboard.this, "Clicked", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(Dashboard.this, "Clicked", Toast.LENGTH_SHORT).show();
             }
         });
         bt.setOnClickListener(new View.OnClickListener() {
@@ -225,8 +226,23 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                 startActivity(new Intent(Dashboard.this, RequestDevice.class));
             }
         });
+        fabSyptom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Dashboard.this, AddSymptom.class));
+                Toast.makeText(Dashboard.this, "Clicked", Toast.LENGTH_SHORT).show();
+            }
 
+        });
+        fabVisit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Dashboard.this, DisplayListTwo.class));
+               // Toast.makeText(Dashboard.this, "Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 
     private void chooseFile(){
         Intent intent = new Intent();
