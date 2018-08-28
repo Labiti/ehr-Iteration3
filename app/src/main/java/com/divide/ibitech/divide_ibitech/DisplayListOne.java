@@ -56,7 +56,7 @@ String listOne_url="";
                             JSONArray array = object.getJSONArray("server_response");
                             for(int i =0;i<array.length();i++) {
                                 JSONObject docObj = array.getJSONObject(i);
-                                Doctor d = new Doctor(docObj.getString(""),docObj.getString(""),docObj.getString(""));
+                                Doctor d = new Doctor(docObj.getString("FullName"),docObj.getString("TellNo"),docObj.getString("date"));
                                 doctorList.add(d);
 
                             }

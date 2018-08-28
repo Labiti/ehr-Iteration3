@@ -56,7 +56,7 @@ public class DisplayListTwo extends AppCompatActivity {
                             JSONArray array = object.getJSONArray("server_response");
                             for(int i =0;i<array.length();i++) {
                                 JSONObject patObj = array.getJSONObject(i);
-                                Patient p = new Patient(patObj.getString(""),patObj.getString(""),patObj.getString(""));
+                                Patient p = new Patient(patObj.getString("FullName"),patObj.getString("TellNo"),patObj.getString("date"));
                              patientList.add(p);
 
                             }

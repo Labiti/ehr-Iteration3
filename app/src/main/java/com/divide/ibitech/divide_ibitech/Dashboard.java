@@ -230,7 +230,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Dashboard.this, AddSymptom.class));
-                Toast.makeText(Dashboard.this, "Clicked", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(Dashboard.this, "Clicked", Toast.LENGTH_SHORT).show();
             }
 
         });

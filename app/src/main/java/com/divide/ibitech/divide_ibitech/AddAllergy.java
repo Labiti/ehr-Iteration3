@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AddAllergy extends AppCompatActivity {
-    String URL_ALLERGY= "http://sict-iis.nmmu.ac.za/ibitech/app-test/addcondition.php";
+    String URL_ALLERGY= "http://sict-iis.nmmu.ac.za/ibitech/app-test/addAllergy.php";
     Spinner sp_Severity;
     AutoCompleteTextView autoCompleteTextView;
     String[] AllergyName;
@@ -103,49 +103,59 @@ String severity="";
             @Override
             public void onClick(View v) {
 
-                final String allergy=autoCompleteTextView.getText().toString();
-                final String addDate=tv_date.getText().toString();
+                final String allergy = autoCompleteTextView.getText().toString();
+                final String addDate = tv_date.getText().toString();
+                final String spinnerS = severity;
+
+                if (allergy.isEmpty()) {
+                    autoCompleteTextView.setError("Please enter a allergy");
+
+                }
+                else if(allergy.isEmpty()||spinnerS.isEmpty()){
+                    Toast.makeText(AddAllergy.this, "Make sure you have entered all the values. ", Toast.LENGTH_LONG).show();
+
+                }
+                else {
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ALLERGY,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    try {
+
+                                        JSONArray jsonArray = new JSONArray(response);
+                                        JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                        String code = jsonObject.getString("code");
+                                        String message = jsonObject.getString("message");
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    Toast toast = Toast.makeText(AddAllergy.this, response, Toast.LENGTH_LONG);
+                                    toast.show();
 
 
-                StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_ALLERGY,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                try {
-
-                                    JSONArray jsonArray = new JSONArray(response);
-                                    JSONObject jsonObject = jsonArray.getJSONObject(0);
-                                    String code = jsonObject.getString("code");
-                                    String message = jsonObject.getString("message");
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
                                 }
-                                Toast toast = Toast.makeText(AddAllergy.this, response, Toast.LENGTH_LONG);
-                                toast.show();
+                            }, new com.android.volley.Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
 
+                        }
+                    }) {
 
-                            }
-                        }, new com.android.volley.Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> paramas = new HashMap<String, String>();
+                            paramas.put("Allergy_name", allergy);
+                            paramas.put("severity", spinnerS);
+                            paramas.put("date", addDate);
+                            paramas.put("patient_id", idNumber);
 
-                    }
-                }){
+                            return paramas;
+                        }
+                    };
+                    Singleton.getInstance(AddAllergy.this).addToRequestQue(stringRequest);
 
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String,String>paramas= new HashMap<String, String>();
-                        paramas.put("Allergy_name",allergy);
-                        paramas.put("severity",addDate);
-
-
-
-                        return paramas;
-                    }
-                };
-                Singleton.getInstance(AddAllergy.this).addToRequestQue(stringRequest);
-
+                }
             }
         });
 
