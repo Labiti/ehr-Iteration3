@@ -6,11 +6,11 @@ package com.divide.ibitech.divide_ibitech.Model;
 
 public class Patient {
     String Fullname;
-    String Date;
+    String Surname;
     String TellNo;
-    public Patient(String fullname, String date, String tellNo) {
+    public Patient(String fullname, String Surname, String tellNo) {
         Fullname = fullname;
-        Date = date;
+        Surname = Surname;
         TellNo = tellNo;
     }
 
@@ -18,8 +18,8 @@ public class Patient {
         return Fullname;
     }
 
-    public String getDate() {
-        return Date;
+    public String getSurname() {
+        return Surname;
     }
 
     public String getTellNo() {

@@ -35,11 +35,11 @@ public class PatAdapter extends ArrayAdapter<Patient> {
         LayoutInflater inflater=LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.display_list_two,null,true);
         TextView name=(TextView) view.findViewById(R.id.tvName);
-        TextView date=(TextView) view.findViewById(R.id.tvVisDate);
+        TextView surname=(TextView) view.findViewById(R.id.surname);
         TextView tel=(TextView) view.findViewById(R.id.tvtellNo);
         Patient patient=patientList.get(position);
         name.setText(patient.getFullname());
-        date.setText(patient.getDate());
+        surname.setText(patient.getSurname());
         tel.setText(patient.getTellNo());
 
         return  view;

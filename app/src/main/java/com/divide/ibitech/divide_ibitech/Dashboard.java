@@ -52,7 +52,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     //Button btn_Logout,btn_photo_upload;
     private Bitmap bitmap;
     String getId;
-    LinearLayout bt,device;
+    LinearLayout bt,device,symptomView,allergyView;
     private static final String TAG = Dashboard.class.getSimpleName(); //getting the info
 
     private static String URL_UPLOAD = "http://sict-iis.nmmu.ac.za/ibitech/app/upload.php";
@@ -147,6 +147,8 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         bt = findViewById(R.id.manageCondition);
         device = findViewById(R.id.manageDevice);
+        symptomView=findViewById(R.id.manageSymptom);
+        allergyView=findViewById(R.id.manageAllergy);
 
         //For Dashboard display
 
@@ -207,6 +209,21 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                 chooseFile();
             }
         });*/
+ symptomView.setOnClickListener(new View.OnClickListener() {
+     @Override
+     public void onClick(View v) {
+         startActivity(new Intent(Dashboard.this, ViewSymptoms.class));
+
+     }
+ });
+ allergyView.setOnClickListener(new View.OnClickListener() {
+     @Override
+     public void onClick(View v) {
+         startActivity(new Intent(Dashboard.this, ViewAllergy.class));
+
+
+     }
+ });
         mFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -237,7 +254,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         fabVisit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this, ViewSymptoms.class));
+                startActivity(new Intent(Dashboard.this, DisplayListOne.class));
                // Toast.makeText(Dashboard.this, "Clicked", Toast.LENGTH_SHORT).show();
             }
         });

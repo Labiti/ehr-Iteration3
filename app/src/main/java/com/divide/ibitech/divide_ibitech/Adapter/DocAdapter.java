@@ -34,12 +34,12 @@ public class DocAdapter extends ArrayAdapter<Doctor>{
 
         LayoutInflater inflater=LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.list_display,null,true);
-        TextView name=(TextView) view.findViewById(R.id.tvName);
-        TextView date=(TextView) view.findViewById(R.id.tvVisDate);
-        TextView tel=(TextView) view.findViewById(R.id.tvtellNo);
+        TextView name=(TextView) view.findViewById(R.id.DName);
+        TextView surname=(TextView) view.findViewById(R.id.Dsurname);
+        TextView tel=(TextView) view.findViewById(R.id.DTell);
 Doctor doctor=doctorList.get(position);
-name.setText(doctor.getFullname());
-        date.setText(doctor.getDate());
+        name.setText(doctor.getFullname());
+        surname.setText(doctor.getSurname());
         tel.setText(doctor.getTellNo());
 
 return  view;

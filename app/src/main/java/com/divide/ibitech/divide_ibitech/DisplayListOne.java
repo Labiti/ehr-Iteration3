@@ -24,20 +24,23 @@ import java.util.List;
 public class DisplayListOne extends AppCompatActivity {
 ListView listView;
 List<Doctor> doctorList;
-String listOne_url="";
+String listOne_url="http://sict-iis.nmmu.ac.za/ibitech/app-test/getADocAppointment.php";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_list_one);
         listView=(ListView)findViewById(R.id.list_data);
         doctorList=new ArrayList<>();
+        showlist();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent fast =new Intent(DisplayListOne.this,ViewOne.class);
 
                 startActivity(fast);
-                showlist();
+
             }
         });
 
@@ -58,7 +61,7 @@ String listOne_url="";
                             JSONArray array = object.getJSONArray("server_response");
                             for(int i =0;i<array.length();i++) {
                                 JSONObject docObj = array.getJSONObject(i);
-                                Doctor d = new Doctor(docObj.getString("FullName"),docObj.getString("TellNo"),docObj.getString("date"));
+                                Doctor d = new Doctor(docObj.getString("first_name"),docObj.getString("cellphone_number"),docObj.getString("surname"));
                                 doctorList.add(d);
 
                             }

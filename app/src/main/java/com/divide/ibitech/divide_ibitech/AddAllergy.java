@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AddAllergy extends AppCompatActivity {
-    String URL_ALLERGY= "http://sict-iis.nmmu.ac.za/ibitech/app-test/addAllergy.php";
+    String URL_ALLERGY= "http://sict-iis.nmmu.ac.za/ibitech/app-test/addallergy.php";
     Spinner sp_Severity;
     AutoCompleteTextView autoCompleteTextView;
     String[] AllergyName;
