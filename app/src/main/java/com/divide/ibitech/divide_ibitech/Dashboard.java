@@ -237,7 +237,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         fabVisit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this, DisplayListTwo.class));
+                startActivity(new Intent(Dashboard.this, ViewSymptoms.class));
                // Toast.makeText(Dashboard.this, "Clicked", Toast.LENGTH_SHORT).show();
             }
         });

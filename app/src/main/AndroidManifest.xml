@@ -50,7 +50,9 @@
         <activity android:name=".ViewOne" />
         <activity android:name=".ViewTwo" />
         <activity android:name=".DisplayListOne" />
-        <activity android:name=".DisplayListTwo"></activity>
+        <activity android:name=".DisplayListTwo" />
+        <activity android:name=".ViewSymptoms" />
+        <activity android:name=".ViewCondition"></activity>
     </application>
 
 </manifest>

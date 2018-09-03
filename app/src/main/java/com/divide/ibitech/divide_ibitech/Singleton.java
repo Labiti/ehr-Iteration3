@@ -31,6 +31,7 @@ public class Singleton {
     }
 
     public <T>void addToRequestQue(Request<T> request){
+
         requestQueue.add(request);
     }
 }
