@@ -1,5 +1,7 @@
 package com.divide.ibitech.divide_ibitech.Model;
-
+/**
+ * Created by s216100801
+ */
 public class AllergyList {
     String allergy_name,date_added;
 

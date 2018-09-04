@@ -53,7 +53,9 @@
         <activity android:name=".DisplayListTwo" />
         <activity android:name=".ViewSymptoms" />
         <activity android:name=".ViewCondition" />
-        <activity android:name=".ViewAllergy"></activity>
+        <activity android:name=".ViewAllergy" />
+        <activity android:name=".TutorialActvity" />
+        <activity android:name=".Barchart"></activity>
     </application>
 
 </manifest>

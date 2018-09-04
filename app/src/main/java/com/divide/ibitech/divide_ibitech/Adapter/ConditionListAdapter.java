@@ -1,5 +1,7 @@
 package com.divide.ibitech.divide_ibitech.Adapter;
-
+/**
+ * Created by s216100801
+ */
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

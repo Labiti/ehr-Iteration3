@@ -1,5 +1,7 @@
 package com.divide.ibitech.divide_ibitech;
-
+/**
+ * Created by s216100801
+ */
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
