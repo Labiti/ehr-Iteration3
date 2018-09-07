@@ -1,8 +1,10 @@
 package com.divide.ibitech.divide_ibitech;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -31,6 +33,11 @@ public class ViewAllergy extends AppCompatActivity {
         setContentView(R.layout.activity_view_allergy);
         listView=(ListView)findViewById(R.id.listAllergy);
         alleList= new ArrayList<>();
+        SharedPreferences preferences = getSharedPreferences("PROFILEPREFS",MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        TextView patname = (TextView) findViewById(R.id.patientName);
+        String value =preferences.getString("Fullname","");
+        patname.setText(value);
         ShowList();
     }
 

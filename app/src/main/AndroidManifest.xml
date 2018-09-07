@@ -55,7 +55,8 @@
         <activity android:name=".ViewCondition" />
         <activity android:name=".ViewAllergy" />
         <activity android:name=".TutorialActvity" />
-        <activity android:name=".Barchart"></activity>
+        <activity android:name=".Barchart" />
+        <activity android:name=".DoctorTutorial"></activity>
     </application>
 
 </manifest>

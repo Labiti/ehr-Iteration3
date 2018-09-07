@@ -10,13 +10,13 @@ import android.view.ViewGroup;
  * Created by s216100801 on 2018/09/07.
  */
 
-public class MpageAdapter extends PagerAdapter {
+public class DoctorViewPage extends PagerAdapter {
 
     private int[] layouts;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public MpageAdapter(int[] layouts, Context context) {
+    public DoctorViewPage(int[] layouts, Context context) {
         this.layouts = layouts;
         this.context = context;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

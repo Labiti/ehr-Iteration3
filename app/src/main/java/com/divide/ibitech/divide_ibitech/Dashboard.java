@@ -172,6 +172,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         fabSyptom = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.floatingActionItem3);
         //For Dashboard display
        // For Edit Profile
+        String Full= tv_FullName.getText().toString();
         String sID = user.get(sessionManager.ID);
         String sCell = user.get(sessionManager.CELLNUMBER);
         String sEmail = user.get(sessionManager.EMAIL);
@@ -179,7 +180,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         String sHeight = user.get(sessionManager.HEIGHT);
         String sProfilePic = user.get(sessionManager.PROFILEPIC);
         String sMedicaAid = user.get(sessionManager.MEDICALAID);
-
+            editor.putString("Fullname",Full);
         editor.putString("pID",sID);
         editor.putString("pName",sName);
         editor.putString("pStatus",sStatus);
@@ -254,7 +255,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         fabVisit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this, Barchart.class));
+                startActivity(new Intent(Dashboard.this, DoctorTutorial.class));
                // Toast.makeText(Dashboard.this, "Clicked", Toast.LENGTH_SHORT).show();
             }
         });

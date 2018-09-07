@@ -2,9 +2,11 @@ package com.divide.ibitech.divide_ibitech;
 /**
  * Created by s216100801
  */
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -30,6 +32,11 @@ List <SymptomsList> sympLists;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_symptoms);
+        SharedPreferences preferences = getSharedPreferences("PROFILEPREFS",MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        TextView patname = (TextView) findViewById(R.id.patientName);
+String value =preferences.getString("Fullname","");
+patname.setText(value);
         listView=(ListView)findViewById(R.id.listSymp);
         sympLists= new ArrayList<>();
 ShowList();

@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 public class TutorialActvity extends AppCompatActivity {
 private ViewPager mPager;
-private int[] layouts={R.layout.slide_zero,R.layout.slide_one,R.layout.slide_two,R.layout.slide_three,R.layout.slide_four,R.layout.slide_five,R.layout.slide_six,R.layout.slide_seven,R.layout.slide_nine,R.layout.slide_ten};
+private int[] layouts={R.layout.slide_zero,R.layout.slide_one,R.layout.slide_two,R.layout.slide_three,R.layout.slide_four,R.layout.slide_five,R.layout.slide_six,R.layout.slide_seven,R.layout.slide_eight,R.layout.slide_nine,R.layout.slide_ten};
 private  MpageAdapter mpageAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
