@@ -24,7 +24,8 @@ import java.util.List;
 public class ViewAllergy extends AppCompatActivity {
     ListView listView;
     String URLAllergy = "http://sict-iis.nmmu.ac.za/ibitech/app-test/getallergy.php";
-
+    String URLAllergyfilter = "http://sict-iis.nmmu.ac.za/ibitech/app-test/search.php";
+TextView input_search;
     List<AllergyList> alleList;
     SessionManager sessionManager;
     @Override
